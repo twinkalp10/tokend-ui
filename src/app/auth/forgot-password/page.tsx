@@ -42,7 +42,7 @@ function getInboxInfo(email: string) {
 }
 
 export default function ForgotPasswordPage() {
-  const [email, setEmail] = React.useState('twinkalp1525@gmail.com');
+  const [email, setEmail] = React.useState('');
   const [emailTouched, setEmailTouched] = React.useState(false);
   const [isSending, setIsSending] = React.useState(false);
   const [linkSent, setLinkSent] = React.useState(false);

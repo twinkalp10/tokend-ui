@@ -12,7 +12,7 @@ function ResetPasswordForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const initialEmail =
-    searchParams.get('email') || 'twinkalp1525@gmail.com';
+    searchParams.get('email') || 'alex@example.com';
 
   const [email] = React.useState(initialEmail);
   const [newPassword, setNewPassword] = React.useState('');
