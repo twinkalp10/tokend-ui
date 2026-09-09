@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+:root {
+  /* Ferndesk Verified Colors */
+  --bone: #f4f3ee;
+  --surface-0: var(--bone);
+  --surface-1: #ffffff;
+  --surface-2: #ffffff;
+  --surface-3: #fcfbf8;
+  --surface-sunken: #f7f6f2;
+  --surface-border: #e7e5dc;
+  --surface-border-subtle: #eeece5;
+
+  /* Primary Brand */
+  --primary-50: #eef6f0;
+  --primary-100: #e2f3e9;
+  --primary-200: #a8dcc0;
+  --primary-300: #8bcfab;
+  --primary-400: #5fb585;
+  --primary-500: #2a8a5a;
+  --primary-600: #1f6b45;
+  --primary-700: #175236;
+  --primary-800: #144a2f;
+  --primary-900: #0f3823;
+  --primary-950: #14261b;
+
+  --primary-base: var(--primary-600);
+  --primary-dark: var(--primary-700);
+  --primary-darker: #144a2f;
+  --primary-light: var(--primary-500);
+  --primary-soft: var(--primary-100);
+  --primary-alpha-24: #1f6b453d;
+  --primary-alpha-16: #1f6b4529;
+  --primary-alpha-10: #1f6b451a;
+
+  /* Neutrals (Reloop & Ferndesk AlignUI tokens) */
+  --neutral-950: #0e0d0c;
+  --neutral-900: #141312;
+  --neutral-800: #1e1d1b;
+  --neutral-700: #2b2927;
+  --neutral-600: #484542;
+  --neutral-500: #6d6a66;
+  --neutral-400: #93908a;
+  --neutral-300: #c4c1b9;
+  --neutral-200: #dedbd4;
+  --neutral-100: #eceae5;
+  --neutral-50: #f7f6f2;
+  --neutral-0: #ffffff;
+
+  /* Text tokens */
+  --text-strong: #141312;
+  --text-body: #3c3a37;
+  --text-sub: #6d6a66;
+  --text-soft: #93908a;
+  --text-disabled: #b8b5ac;
+  --text-inverse: #ffffff;
+
+  /* Button Tokens - Exact Ferndesk values */
+  --radius-btn: 10px;
+  --btn-primary-bg: linear-gradient(180deg, #2a7f52 0%, #1f6b45 100%);
+  --btn-primary-border: #175236;
+  --btn-primary-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 1px 0 #144a2f, 0 2px 4px rgba(20, 19, 18, 0.08);
+
+  --btn-secondary-bg: linear-gradient(180deg, #ffffff 0%, #f0eee8 100%);
+  --btn-secondary-border: #d8d5ce;
+  --btn-secondary-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 1px 0 #c8c5be, 0 2px 4px rgba(20, 19, 18, 0.08);
+
+  --btn-ink-bg: linear-gradient(180deg, #2e2d2a 0%, #1c1b19 100%);
+  --btn-ink-border: #141312;
+  --btn-ink-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 #0a0908, 0 2px 4px rgba(20, 19, 18, 0.08);
+
+  --btn-danger-bg: linear-gradient(180deg, #e44e44 0%, #d8392f 100%);
+  --btn-danger-border: #a8261f;
+  --btn-danger-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 0 #8c1f19, 0 2px 4px rgba(20, 19, 18, 0.08);
+
+  --focus-ring: 0 0 0 2px var(--surface-0), 0 0 0 4px #2a8a5a;
+}
+
+:root[data-theme="light"], :root[data-theme="pure-light"], html[data-theme="light"], html[data-theme="pure-light"], body[data-theme="light"], body[data-theme="pure-light"] {
+  --bone: #ffffff;
+  --surface-0: #ffffff;
+  --surface-1: #ffffff;
+  --surface-2: #fcfcfc;
+  --surface-3: #f9f9f9;
+  --surface-sunken: #f5f5f5;
+  --surface-border: #e4e4e7;
+  --surface-border-subtle: #f0f0f2;
+}
+
+body {
+  background-color: var(--surface-0);
+  color: var(--text-body);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ferndesk Custom Button Base Styles */
+.btn-face {
+  border-radius: var(--radius-btn);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  transition: transform 0.12s cubic-bezier(0.2, 0.7, 0.2, 1), 
+              box-shadow 0.12s cubic-bezier(0.2, 0.7, 0.2, 1), 
+              background-color 0.12s cubic-bezier(0.2, 0.7, 0.2, 1),
+              filter 0.12s cubic-bezier(0.2, 0.7, 0.2, 1);
+  user-select: none;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.btn-face:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.btn-face:not(:disabled):active,
+.btn-face:not(:disabled)[data-pressed="true"] {
+  transform: translateY(1px);
+}
+
+.btn-face:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Button Variants */
+.btn-primary {
+  background-image: var(--btn-primary-bg);
+  border-color: var(--btn-primary-border);
+  box-shadow: var(--btn-primary-shadow);
+  color: #ffffff;
+}
+
+.btn-primary:not(:disabled):hover {
+  filter: brightness(1.05);
+}
+
+.btn-primary:not(:disabled):active {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 2px rgba(20, 19, 18, 0.12);
+}
+
+.btn-secondary {
+  background-image: var(--btn-secondary-bg);
+  border-color: var(--btn-secondary-border);
+  box-shadow: var(--btn-secondary-shadow);
+  color: var(--text-strong);
+}
+
+.btn-secondary:not(:disabled):hover {
+  filter: brightness(0.98);
+}
+
+.btn-secondary:not(:disabled):active {
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.05), 0 1px 1px rgba(20, 19, 18, 0.05);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--text-body);
+  box-shadow: none;
+}
+
+.btn-ghost:not(:disabled):hover {
+  background-color: rgba(147, 144, 138, 0.12);
+  color: var(--text-strong);
+}
+
+.btn-ghost:not(:disabled):active {
+  background-color: rgba(147, 144, 138, 0.18);
+  transform: translateY(1px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-color: var(--surface-border);
+  color: var(--text-strong);
+  box-shadow: 0 1px 2px rgba(20, 19, 18, 0.04);
+}
+
+.btn-outline:not(:disabled):hover {
+  background-color: var(--surface-sunken);
+  border-color: var(--neutral-300);
+}
+
+.btn-outline:not(:disabled):active {
+  transform: translateY(1px);
+  background-color: var(--neutral-100);
+}
+
+.btn-ink {
+  background-image: var(--btn-ink-bg);
+  border-color: var(--btn-ink-border);
+  box-shadow: var(--btn-ink-shadow);
+  color: #ffffff;
+}
+
+.btn-ink:not(:disabled):hover {
+  filter: brightness(1.1);
+}
+
+.btn-danger {
+  background-image: var(--btn-danger-bg);
+  border-color: var(--btn-danger-border);
+  box-shadow: var(--btn-danger-shadow);
+  color: #ffffff;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(147, 144, 138, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(147, 144, 138, 0.5);
+}
